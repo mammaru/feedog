@@ -22,7 +22,6 @@ class FeedsController < ApplicationController
   # GET /feeds/1
   # GET /feeds/1.json
   def show
-    #@feed = Feed.find(params[:id])
     @entries = Entry.where(:feed_id => params[:id]).page(params[:page])
     respond_to do |format|
       format.html # show.html.erb
@@ -41,10 +40,6 @@ class FeedsController < ApplicationController
   def new
     @feed = Feed.new
     @categories = Category.order(:name)
-    #respond_to do |format|
-      #format.html # new.html.erb
-      #format.json { render json: @feed }
-    #end
   end
 
   # GET /feeds/1/edit
@@ -85,10 +80,7 @@ class FeedsController < ApplicationController
   # DELETE /feeds/1
   # DELETE /feeds/1.json
   def destroy
-    #@feed = Feed.find(params[:id])
-    #p @feed
     @feed.destroy
-
     respond_to do |format|
       format.html { redirect_to feeds_path }
       format.json { head :no_content }
