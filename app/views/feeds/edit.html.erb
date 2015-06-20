@@ -1,0 +1,17 @@
+<% content_for :main do %>
+
+    <div id="sidemenu">
+      <center>
+        <%= link_to_unless_current 'Feed', :action => 'index' -%><br>
+      </center>
+    </div>
+
+    <div id="sidemain">
+      <h1>Editing feed</h1>
+
+      <%= render 'form' %>
+
+      <%= link_to 'Show', @feed %> |
+      <%= link_to 'Back', feeds_path %>
+    </div>
+<% end %>

@@ -1,0 +1,32 @@
+<% content_for :main do %>
+
+  <p id="notice"><%# notice %></p>
+
+  <p>
+    <b>Title:</b>
+    <%= @feed.title %>
+  </p>
+  <p>
+    <b>Url:</b>
+    <%= link_to @feed.url, @feed.url, :target=>["_blank"] %>
+  </p>
+  <p>
+    <b>Feed Url:</b>
+    <%= @feed.feed_url %>
+  </p>
+  <p>
+    <b>Category:</b>
+    <% if @feed.category %>
+    <%= link_to @feed.category.name, @feed.category %>
+    <% else %>
+      Yet Categorised
+    <%end %>
+  </p>
+
+  <%= link_to 'Fetch', fetch_feed_path(@feed) %> |
+  <%= link_to 'Edit', edit_feed_path(@feed) %> |
+  <%= link_to 'Back', feeds_path %>
+
+  <%= render 'shared/entries' %>
+
+<% end %>

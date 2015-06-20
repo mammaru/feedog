@@ -1,0 +1,8 @@
+$(".clip_<%= @entry.id %>")
+  .removeClass("clipped").addClass("unclipped")
+  .find("a")
+  //.removeAttr("href")
+  .attr("href", "<%= clips_create_url %>?e_id=<%= @entry.id %>")
+  .removeAttr("data-method")
+  .data("method", "get")
+;

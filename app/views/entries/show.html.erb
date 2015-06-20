@@ -1,0 +1,26 @@
+<% content_for :main do %>
+
+  <p>
+    <b>Title:</b>
+    <%= @entry.title %>
+  </p>
+  <p>
+    <b>Published:</b>
+    <%= @entry.published_at %>
+  </p>
+  <p>
+    <b>Url:</b>
+    <%= link_to @entry.url, @entry.url, :target=>["_blank"] %>
+  </p>
+  <p>
+    <b>Feed:</b>
+    <%= @entry.feed.title %>, <%= @entry.feed.category.name %>
+  </p>
+  <p>
+    <b>Summary:</b>
+    <%= @entry.summary %>
+  </p>
+
+  <%= link_to 'Entries', entries_path %>
+
+<% end %>

@@ -1,0 +1,48 @@
+<% content_for :main do %>
+
+    <h1>Feeds</h1>
+
+    <%= link_to 'Entries', entries_path %>
+    <%= link_to 'Fetch All Feed', fetch_all_feeds_path %>
+    <%= link_to 'New Feed', new_feed_path %>
+
+    <table>
+      <tr>
+        <th></th>
+        <th>Category</th>
+        <th>Title</th>
+        <th>Number of entries</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+
+      <% @feeds.each do |feed| %>
+          <tr>
+            <td><%= feed.id %></td>
+            <td><%= if feed.category then feed.category.name else "" end %></td>
+            <td><%= link_to feed.title, feed.url %></td>
+            <th><%= feed.entries.count %></th>
+            <td><%= link_to 'Show', feed %></td>
+            <td><%= link_to 'Edit', edit_feed_path(feed) %></td>
+            <td><%= link_to 'Fetch', fetch_feed_path(feed) %></td>
+            <td><%= link_to 'Destroy', feed, confirm: 'Are you sure?', method: :delete %></td>
+          </tr>
+      <% end %>
+
+      <tr>
+        <th>Total</th>
+        <th></th>
+        <th></th>
+        <th><%= @entries.count %></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </table>
+
+
+<% end %>
+

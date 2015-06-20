@@ -1,0 +1,52 @@
+<% content_for :main do %>
+
+    <h1>All Entries</h1>
+
+    <div id="menu-tree">
+      <%= form_tag search_entries_path, :method => 'get' do %>
+        <p>
+          <%= text_field_tag :search, params[:search] %>
+          <%= submit_tag "Search", :title => nil %>
+        </p>
+      <% end %>
+      <span>
+		  <i class="fa fa-paperclip"></i>
+	  </span>
+	  &nbsp
+	  <%= link_to 'Clipped Entries', clipped_entries_path %>
+	  &nbsp&nbsp
+      <span>
+		  <i class="fa fa-rss"></i>
+	  </span>
+	  &nbsp
+	  <%= link_to 'Fetch All Feed', fetch_all_feeds_path %>
+	  <br />
+      <span id="menu-tree-t">
+		  <i class="fa fa-chevron-down"></i>
+	  </span>
+	  &nbsp
+	  <%= link_to "Categories", categories_path %>
+	  &nbsp-&nbsp
+	  <%= link_to "Feeds", feeds_path %>
+      <ul id="categories">
+        <% @categories.each do |category| %>
+          <li>
+            <%= link_to category.name, category %>
+            <ul class="feeds">
+              <li>
+                <% category.feeds.each do |feed| %>
+                  <%= link_to feed.title, feed %>&nbsp
+                <% end %>
+              </li>
+            </ul>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
+    <br />
+
+	<%= render 'shared/entries' %>
+
+<% end %>
+

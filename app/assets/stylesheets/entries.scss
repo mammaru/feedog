@@ -1,0 +1,162 @@
+// Place all the styles related to the feeds controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+#menu-tree {
+  position: relative;
+  left: 30px;
+  a {
+    font-size: small;
+    color: black;
+  }
+  #menu-tree-t {
+  }
+  #categories {
+    display: none;
+    li {
+      list-style-type: none;
+      &:before {
+         content: "-";
+      }
+    }
+  }
+}
+
+#fade_and_follow {
+  z-index: 10;
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+  width: 100px;
+  height: 100px;
+  display: none;
+  p {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-size: 40px;
+    border-radius: 5px;
+    background: #3b3b3b;
+    background: rgba(50,0,10,0.8);
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    &:hover {
+      background: #8b8b8b;
+    }
+  }
+  #move_top {
+    border-radius: 5px;
+    color: #fff;
+    line-height: 100px;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+  }
+}
+
+
+.item {
+  display: block;
+  position: relative;
+  width: calc((100% - 80px) / 3);
+  //min-height: 100px;
+  margin: 10px;
+  padding: 0px;
+    
+  .published_at {
+    z-index: 1;
+    position: absolute;
+    margin: 0px;
+    top: 5px;
+    left: 5px;
+    a {
+      color: rgba(200,200,200,1);
+    }
+  }
+
+  .title {
+    position: relative;
+    border-radius: 2px 2px 2px 2px;
+    background-color: rgba(25,10,10,0.9);
+    color: rgba(255,255,255,0.9);
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+  
+    a { //box化して全体にリンク
+      display: block;
+      //width: 100%;
+      height: 100%;
+      padding: 30px 10px 40px 10px;
+      color: rgba(255,255,255,0.9);
+      font-size: 15pt;
+      text-decoration: none;
+      -webkit-transition:all 0.3s;
+      -moz-transition:all 0.3s;
+      transition:all 0.3s;
+      &:hover {
+        //font-size: 20pt;
+        color: rgba(77,56,46,1);
+        background-color: white;
+        text-decoration: none;
+      }
+      .inner_title {
+        left: 10px;
+      }
+    }
+  }
+
+  .meta {
+    position: absolute;
+    left: 5px;
+    //right: 5px;
+    bottom: 5px;
+    a {
+      color: rgba(200,200,200,1);
+      text-decoration: none;
+      &:hover {
+        //color: rgba(255,255,255,0.9);
+        background-color: rgba(20,10,10,0);
+        text-decoration: underline !important;
+      }
+      &:visited {
+        //color: rgba(255,255,255,0.9);
+        background-color: rgba(20,10,10,0);
+        text-decoration: underline !important;
+      }
+    }
+  }
+  .icons {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    //width: 30px;
+    height: 30px;
+	.summary {
+      color: rgba(255,255,255,0.5);
+      &:hover {
+        color: rgba(255,255,255,1) !important;
+      }
+	}
+    .unclipped {
+      i {
+        color: rgba(255,255,255,0.5);
+        &:hover {
+          color: rgba(255,255,255,1) !important;
+        }
+      }
+    }
+   .clipped {
+      i {
+        color: rgba(255,0,0,0.5);
+        &:hover {
+          color: rgba(255,0,0,1) !important;
+        }
+      }
+    }
+  }
+}
