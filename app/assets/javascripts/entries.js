@@ -85,7 +85,7 @@ function word_cloud(){
 
 	d3.layout.cloud().size([w, h])
 		.words(words)
-		.rotate(function() { return Math.round(1-random()) *70; }) //ランダムに文字を90度回転
+		.rotate(function() { return Math.round(1-random()) *60; }) //ランダムに文字を90度回転
 		.font("Impact")
 		.fontSize(function(d) { return d.size; })
 		.on("end", draw)
