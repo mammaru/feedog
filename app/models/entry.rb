@@ -12,7 +12,7 @@ class Entry < ActiveRecord::Base
   #default_scope { order('RANDOM()') }
   #paginates_per 50
   
-  def self.destroy_overflowed_entries(feed_id)
+  def self.destroy_overflowed_entries(*feed_id)
     clipped_entries = Clip.pluck(:entry_id)
     if feed_id
       entries = Entry.where(:feed_id => feed_id).pluck(:id)
