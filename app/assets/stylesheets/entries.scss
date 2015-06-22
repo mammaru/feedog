@@ -136,7 +136,7 @@
     bottom: 10px;
     //width: 30px;
     height: 30px;
-	.summary {
+	.opn_smry {
       color: rgba(255,255,255,0.5);
       &:hover {
         color: rgba(255,255,255,1) !important;
@@ -158,5 +158,14 @@
         }
       }
     }
+  }
+  .summary {
+	display: block;
+	//display: none;
+    padding: 10px 10px 40px 10px;
+    background-color: rgba(255,255,255,0.9);	
+	a {
+
+	}
   }
 }

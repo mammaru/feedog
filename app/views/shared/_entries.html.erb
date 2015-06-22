@@ -4,6 +4,8 @@
 
 <%# page_entries_info @entries %>
 
+<div id="test"></div>
+
 <div id="cont">
 	<% @entries.each do |entry| %>
 		
@@ -18,7 +20,7 @@
 					<span class="inner_title"><%= entry.title %></span>
 				<% end %>
 			</div>
-			
+
 			<span class="meta">
 				<a class="feed_title">
 					<%= link_to_unless_current (
@@ -42,8 +44,9 @@
 					%> 
 				</a>
 			</span>
+
 			<span class="icons">
-				<%= link_to entry_path(entry) do %><i class="fa fa-coffee summary"></i><% end %>
+				<%= link_to entry_path(entry) do %><i class="fa fa-coffee opn_smry"></i><% end %>
 				<% if entry.clip %>
 					<span class="clip_<%= entry.id %> clipped">
 						<%= link_to "#{clips_destroy_url}"+"?e_id=#{entry.id}", :method => :delete, :remote => true do %>
@@ -58,6 +61,11 @@
 					</span>
 				<% end %>
 			</span>
+
+			<span class="summary s_<%= entry.id %>">
+				<%= entry.summary %>
+			</span>
+
 		</div>
 	<% end %>
 </div>
@@ -70,3 +78,10 @@
 	<p><a id="move_top">▲</a></p>
 </div>
 
+<script type="text/javascript">
+$(".summary").click(function(){
+	var smry_area = document.getElementById("test");
+	console.log(smry_area);
+	smry_area.innerHTML = "test test test test test test test test test test test test test test test test test test test test test test test test test test";
+});
+</script>

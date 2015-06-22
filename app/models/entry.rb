@@ -20,6 +20,7 @@ class Entry < ActiveRecord::Base
       if entries.length > MAX_NUMBER_OF_ENTRIES_PER_FEED
         entries = entries.reverse[0..(MAX_NUMBER_OF_ENTRIES_PER_FEED-1)]
         entries.reverse!
+        p "Destroy entries from a feed"
         Entry.destroy_all(:id => entries)
       end
     else
@@ -29,6 +30,7 @@ class Entry < ActiveRecord::Base
         if entries.length > MAX_NUMBER_OF_ENTRIES_PER_FEED
           entries = entries.reverse[0..(MAX_NUMBER_OF_ENTRIES_PER_FEED-1)]
           entries.reverse!
+          p "Destroy entries from feed #{feed.title}"
           Entry.destroy_all(:id => entries)
         end
       end
