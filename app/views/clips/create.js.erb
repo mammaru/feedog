@@ -1,8 +1,7 @@
 $(".clip_<%= @entry.id %>")
-  .removeClass("unclipped").addClass("clipped")
-  .find("a")
-  //.removeAttr("href")
-  .attr("href", "<%= clips_destroy_url %>?e_id=<%= @entry.id %>")
-  .removeAttr("data-method")
-  .data("method", "delete")
-;
+	.removeClass("unclipped").addClass("clipped")
+	.find("a")
+	//.removeAttr("href")
+	.attr("href", "<%= clips_destroy_url %>?e_id=<%= @entry.id %>")
+	.removeAttr("data-method")
+	.data("method", "delete");

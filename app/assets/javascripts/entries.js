@@ -24,7 +24,11 @@ $(function(){
 // scattering item blocks like tiles
 $(function(){
     $('#cont').masonry({
-        itemSelector : '.item'
+        itemSelector : '.item',
+		isAnimated: true,
+		//isFitWidth: true,
+		isRTL: false,
+		gutterWidth: 0
     });
 });
 
@@ -32,16 +36,16 @@ $(function(){
 $(function(){
 
     var container = $('#cont');
-
+	
     /*
-     container.imagesLoaded(function(){
-        $(container).masonry({
-            itemSelector: '.item'
-            //columnWidth: 10
-			});
-			});
+      container.imagesLoaded(function(){
+      $(container).masonry({
+      itemSelector: '.item'
+      //columnWidth: 10
+	  });
+	  });
     */
-
+	
     container.infinitescroll({
         navSelector  : 'div#loading-area nav.pagination',
         nextSelector : 'div#loading-area nav.pagination .next a',

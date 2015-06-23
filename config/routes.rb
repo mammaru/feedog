@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   resources :feeds do
     member do
-    get 'fetch'
+      get 'fetch'
     end
     collection do
       get 'search'
@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   delete 'clips/destroy'
 
   resources :entries do
+    member do
+      get 'toggle_summary'
+    end
     collection do
       get 'search'
       get 'clipped'

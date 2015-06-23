@@ -20,52 +20,55 @@
 					<span class="inner_title"><%= entry.title %></span>
 				<% end %>
 			</div>
+			
+			<div class="item_footer">
+				<div class="summary s_<%= entry.id %>">
+					<%= entry.summary.slice(0,255) %>
+				</div>
 
-			<span class="meta">
-				<a class="feed_title">
-					<%= link_to_unless_current (
-												if entry.feed.category then 
-												entry.feed.category.name
-												else
-												"" 
-												end
-												),
-												entry.feed.category
-					%>
-					<a>|</a>
-					<%= link_to_unless_current (
-												if entry.feed.title.length > 20
-												entry.feed.title.slice(0,20) + "..." 
-												else
-												entry.feed.title
-												end
-												),
-												entry.feed 
-					%> 
-				</a>
-			</span>
+				<span class="meta">
+					<a class="feed_title">
+						<%= link_to_unless_current (
+													if entry.feed.category then 
+													entry.feed.category.name
+													else
+													"" 
+													end
+													),
+													entry.feed.category
+						%>
+						<a>|</a>
+						<%= link_to_unless_current (
+													if entry.feed.title.length > 20
+													entry.feed.title.slice(0,20) + "..." 
+													else
+													entry.feed.title
+													end
+													),
+													entry.feed 
+						%> 
+					</a>
+				</span>
 
-			<span class="icons">
-				<%= link_to entry_path(entry) do %><i class="fa fa-coffee opn_smry"></i><% end %>
-				<% if entry.clip %>
-					<span class="clip_<%= entry.id %> clipped">
-						<%= link_to "#{clips_destroy_url}"+"?e_id=#{entry.id}", :method => :delete, :remote => true do %>
-							<i class="fa fa-star fa-2x"></i>
-						<% end %>
-					</span>
-				<% else %>
-					<span class="clip_<%= entry.id %> unclipped">
-						<%= link_to "#{clips_create_url}"+"?e_id=#{entry.id}", :remote => true do %>
-							<i class="fa fa-star fa-2x"></i>
-						<% end %>
-					</span>
-				<% end %>
-			</span>
+				<span class="icons">
+					<%= link_to toggle_summary_entry_url(entry), :remote => true do -%><i class="fa fa-coffee opn_smry"></i><% end %>
+					<% if entry.clip %>
+						<span class="clip_<%= entry.id %> clipped">
+							<%= link_to "#{clips_destroy_url}"+"?e_id=#{entry.id}", :method => :delete, :remote => true do %>
+								<i class="fa fa-star fa-2x"></i>
+							<% end %>
+						</span>
+					<% else %>
+						<span class="clip_<%= entry.id %> unclipped">
+							<%= link_to "#{clips_create_url}"+"?e_id=#{entry.id}", :remote => true do %>
+								<i class="fa fa-star fa-2x"></i>
+							<% end %>
+						</span>
+					<% end %>
+				</span>
 
-			<span class="summary s_<%= entry.id %>">
-				<%= entry.summary %>
-			</span>
 
+			</div>
 		</div>
 	<% end %>
 </div>

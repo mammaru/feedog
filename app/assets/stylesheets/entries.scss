@@ -62,11 +62,13 @@
 .item {
   display: block;
   position: relative;
+  //position: absolute;
   width: calc((100% - 80px) / 3);
   //min-height: 100px;
   margin: 10px;
   padding: 0px;
-    
+  clear: both;
+  
   .published_at {
     z-index: 1;
     position: absolute;
@@ -91,7 +93,7 @@
       display: block;
       //width: 100%;
       height: 100%;
-      padding: 30px 10px 40px 10px;
+      padding: 30px 10px 10px 10px;
       color: rgba(255,255,255,0.9);
       font-size: 15pt;
       text-decoration: none;
@@ -110,62 +112,68 @@
     }
   }
 
-  .meta {
-    position: absolute;
-    left: 5px;
-    //right: 5px;
-    bottom: 5px;
-    a {
-      color: rgba(200,200,200,1);
-      text-decoration: none;
-      &:hover {
-        //color: rgba(255,255,255,0.9);
-        background-color: rgba(20,10,10,0);
-        text-decoration: underline !important;
-      }
-      &:visited {
-        //color: rgba(255,255,255,0.9);
-        background-color: rgba(20,10,10,0);
-        text-decoration: underline !important;
-      }
-    }
-  }
-  .icons {
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-    //width: 30px;
-    height: 30px;
-	.opn_smry {
-      color: rgba(255,255,255,0.5);
-      &:hover {
-        color: rgba(255,255,255,1) !important;
+  .item_footer{
+	min-height: 35px;
+	width: 100%;
+    background-color: rgba(200,200,200,0.9);
+	
+	.summary {
+	  //display: block;
+	  display: none;
+      padding: 10px 10px 40px 10px;
+	  a {
+
+	  }
+	}
+
+	.meta {
+      position: absolute;
+      left: 5px;
+      //right: 5px;
+      bottom: 5px;
+      a {
+		color: rgba(0,0,0,0.5);
+		text-decoration: none;
+		&:hover {
+          color: rgba(0,0,0,1);
+          background-color: rgba(20,10,10,0);
+          text-decoration: underline !important;
+		}
+		&:visited {
+          color: rgba(0,0,0,0.5);
+          background-color: rgba(20,10,10,0);
+          text-decoration: underline !important;
+		}
       }
 	}
-    .unclipped {
-      i {
-        color: rgba(255,255,255,0.5);
-        &:hover {
+	.icons {
+      position: absolute;
+      right: 10px;
+      bottom: 5px;
+      //width: 30px;
+      height: 30px;
+	  .opn_smry {
+		color: rgba(255,255,255,0.5);
+		&:hover {
           color: rgba(255,255,255,1) !important;
-        }
+		}
+	  }
+      .unclipped {
+		i {
+          color: rgba(100,100,100,0.5);
+          &:hover {
+			color: rgba(100,100,100,1) !important;
+          }
+		}
       }
-    }
-   .clipped {
-      i {
-        color: rgba(255,0,0,0.5);
-        &:hover {
-          color: rgba(255,0,0,1) !important;
-        }
+	  .clipped {
+		i {
+          color: rgba(255,0,0,0.5);
+          &:hover {
+			color: rgba(255,0,0,0.8) !important;
+          }
+		}
       }
-    }
-  }
-  .summary {
-	display: block;
-	//display: none;
-    padding: 10px 10px 40px 10px;
-    background-color: rgba(255,255,255,0.9);	
-	a {
-
 	}
   }
 }

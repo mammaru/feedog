@@ -73,6 +73,12 @@ class EntriesController < ApplicationController
       }
     end
   end
+
+  def toggle_summary
+    p params[:id]
+    @entry = Entry.find(params[:id])
+    #@e_id = params[:id]
+  end
   
   private
   
