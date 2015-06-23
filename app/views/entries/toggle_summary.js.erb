@@ -1,0 +1,18 @@
+// accordion for summary by ajax
+$(".s_<%= @entry.id %>").slideToggle('slow');
+
+// re-layout items so as to summary field 
+$(function(){
+	var container = $('#cont').masonry();
+	setTimeout(function(){
+		$(container).masonry({
+			itemSelector : '.item',
+			isAnimated: true,
+			//isFitWidth: true,
+			isRTL: false,
+			gutterWidth: 0
+		})
+	},
+		400
+	);
+});
