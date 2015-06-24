@@ -25,23 +25,6 @@ class EntriesController < ApplicationController
     end
   end
 
-  def clipped
-    #require 'gon'
-    # clipped_entries_id = Clip.pluck(:entry_id)
-    # @entries = Entry.includes(:clip).where(:id => clipped_entries_id).page(params[:page])   
-    gon.results = Entry.word_count(@entries) 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json {
-        render :json => {
-                   :feed     => @feed,
-                   :category => @category,
-                   :entries  => @entries
-               }
-      }
-    end
-  end
-
   # GET /entries/1
   # GET /entries/1.json
   def show

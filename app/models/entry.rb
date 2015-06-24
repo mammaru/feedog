@@ -4,6 +4,7 @@ class Entry < ActiveRecord::Base
   has_one :clip, :dependent => :destroy
 
   MAX_NUMBER_OF_ENTRIES_PER_FEED = 50
+  require 'natto'
   
   # kaminari
   default_scope { order(published_at: :desc) }
@@ -45,45 +46,43 @@ class Entry < ActiveRecord::Base
   end
   
   def self.word_count(entries)
-    require 'natto'
-    regex = /[一-龠]+|[ぁ-ん]+|[ァ-ヴー]+|[a-zA-Z0-9]+|[ａ-ｚＡ-Ｚ０-９]+/
+
+    #regex = /[一-龠]+|[ぁ-ん]+|[ァ-ヴー]+|[a-zA-Z0-9]+|[ａ-ｚＡ-Ｚ０-９]+/
     titles = ""
     texts = ""
     entries.each do |entry|
       titles += entry.title
       texts += entry.summary
     end
-    texts += titles
-    #p texts
+    texts += titles # とりあえず
+
     word_array = Array.new
     nm = Natto::MeCab.new
-    #node = nm.parse(texts)
-    #p node
-    nm.parse(texts) do |node|
-      #node = node.next
+    nm.parse(texts) do |node| # 名詞だけword_arrayへ
       if /^名詞/ =~ node.feature#.force_encoding("UTF-8")
         word_array << node.surface#.force_encoding("UTF-8")
       end
-    end #until node.next.feature.include?("BOS/EOS")
+    end
     word_hash = Hash.new
     word_array.each do |key|
       word_hash[key] ||= 0
       word_hash[key] += 1
     end
-    p word_hash.to_a
-    return word_hash.to_a
-    #results = nm.parse(texts)
+
+    word_hash = word_hash.sort_by {|k, v| v}.to_h # sort by word count
+    
+    words_total = word_hash.values.inject(0){|sum, i| sum+i}
+    p words_total
+    word_hash_normalized = word_hash.map {|k, v| [k, v.quo(words_total).to_f]}.to_h
+    p word_hash
+    p word_hash_normalized
+    #return word_hash.to_a
+    return word_hash_normalized.to_a
+
     #nm.parse(texts) do |n|
       #puts "#{n.surface}\t#{n.feature}"
       #words.push(n.surface if n.)
     #end
-    #puts results 
-    #words = texts.scan regex
-    #counts = Hash.new(0)
-    #words.each{|word| counts[word] += 1}
-    #sorted = counts.to_a.sort{|a,b| b[1] <=> a[1]}
-    #sorted.each{|e| puts "#{e[0]}=>#{e[1]}"}
-    #return results
   end
 
 end

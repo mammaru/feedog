@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   resources :categories
 
+  get 'clips/index'
+  get 'clips/vis'
   get 'clips/create'
   delete 'clips/destroy'
 
@@ -21,7 +23,6 @@ Rails.application.routes.draw do
     end
     collection do
       get 'search'
-      get 'clipped'
     end
   end
 
