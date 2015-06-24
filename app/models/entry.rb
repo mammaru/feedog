@@ -6,8 +6,6 @@ class Entry < ActiveRecord::Base
   MAX_NUMBER_OF_ENTRIES_PER_FEED = 50
   
   # kaminari
-  #default_scope :order => 'RANDOM()'
-  #default_scope :order => 'published_at DESC'
   default_scope { order(published_at: :desc) }
   #default_scope { order('RANDOM()') }
   #paginates_per 50

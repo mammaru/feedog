@@ -4,8 +4,6 @@
 
 <%# page_entries_info @entries %>
 
-<div id="test"></div>
-
 <div id="cont">
 	<% @entries.each do |entry| %>
 		
@@ -16,14 +14,14 @@
 			</span>
 			
 			<div class="title">
-				<%= link_to entry.url, :target=>["_blank"] do %>
+				<%= link_to entry.url, :target => ["_blank"] do %>
 					<span class="inner_title"><%= entry.title %></span>
 				<% end %>
 			</div>
 			
 			<div class="item_footer">
 				<div class="summary s_<%= entry.id %>">
-					<%= entry.summary.slice(0,255) %>
+					<%= entry.summary.slice(0,100) %>
 				</div>
 
 				<span class="meta">
@@ -81,10 +79,3 @@
 	<p><a id="move_top">▲</a></p>
 </div>
 
-<script type="text/javascript">
-$(".summary").click(function(){
-	var smry_area = document.getElementById("test");
-	console.log(smry_area);
-	smry_area.innerHTML = "test test test test test test test test test test test test test test test test test test test test test test test test test test";
-});
-</script>

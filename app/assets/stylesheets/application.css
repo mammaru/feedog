@@ -10,90 +10,110 @@
  *
  *= require_self
  *= require_tree .
-*/
+ */
 
 html {
-  height: 100%;
-  margin: 0;
-  padding: 0;
+	height: 100%;
+	margin: 0;
+	padding: 0;
 }
 
 body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  /*background-image: url(main_bg.jpg);*/
-  background-color: rgba(250,245,245,1);
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	/*background-image: url(main_bg.jpg);*/
+	background-color: rgba(230,230,230,1);
 }
 
 .menubar {
-  position: fixed !important;
-  position: absolute;
-  z-index: 1;
-  clear: both;
-  background-color: rgba(128,119,115,0.7);
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 50px;
-  /*border-bottom: 1px dotted #ccc;*/
+	position: fixed !important;
+	position: absolute;
+	z-index: 1;
+	clear: both;
+	background-color: rgba(128,119,115,0.7);
+	top: 0;
+	left: 0;
+	width: 100%;
+	//height: 50px;
+	text-align: center;
+}
+
+.menubar div#submenu {
+	display: none;
+}
+
+.menubar a {
+	cursor: pointer;
 }
 
 .menubar a:link {
-  color: #000000;
-  text-decoration: none;
+	//color: #000000;
+	text-decoration: none;
 }
 
 .menubar a:visited {
-  color: #000000;
-  text-decoration: none;
+	color: #000000;
+	text-decoration: none;
 }
 
 .menubar a:hover {
-  color: #333333;
-  background-color: rgba(128,119,115,0);
-  text-decoration: none;
+	color: rgba(255,255,255,1);
+	background-color: rgba(128,119,115,0);
+	text-decoration: none;
 }
 
 ul.mainmenu {
-  font-family: "Open Sans", Verdana, Arial, sans-serif;
-  float: right;
-  text-transform: uppercase;
-  font-weight: 100;
+	font-family: "Open Sans", Verdana, Arial, sans-serif;
+	//float: right;
+	text-transform: uppercase;
+	font-weight: 100;
 }
 
 ul.mainmenu li {
-  display: inline-block;
-  padding: 5px 20px 5px 20px;
-  font-size: medium;
+	display: inline-block;
+	padding: 5px 20px 5px 20px;
+	font-size: medium;
+}
+
+ul.mainmenu li:hover {
+	background-color: rgba(100,100,100,1);
+	color: rgba(255,255,255,1);
 }
 
 #container {
-  z-index: 0;
-  position: relative;
-  top: 0px;
-  bottom: 0px;
-  width: 100%;
-  min-height: 100%;
-  height: auto !important;
-  height: 100%;
-  margin: 50px 0px 0px 0px;
-  padding: 0px 0px 0px 0px;
+	z-index: 0;
+	position: relative;
+	top: 0px;
+	bottom: 0px;
+	width: 100%;
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 50px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	//text-align: center;
 }
 
 #main {
-  z-index: 0;
-  padding: 0px 0px 50px 0px;
+	z-index: 0;
+	padding: 0px 0px 50px 0px;
+	align: center;
+
+	#main-header {
+		width: 100%;
+		text-align: center;
+	}
 }
 
 #footer {
-  z-index: 1;
-  position: absolute;
-  text-align: center;
-  background-color: rgba(128,119,115,0.7);;
-  bottom: 0;
-  width: 100%;
-  height: 50px;
+	z-index: 1;
+	position: absolute;
+	text-align: center;
+	background-color: rgba(128,119,115,0.7);;
+	bottom: 0;
+	width: 100%;
+	height: 50px;
 }
 
 

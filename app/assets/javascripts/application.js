@@ -15,3 +15,10 @@
 //= require jquery.turbolinks
 //= require turbolinks
 //= require_tree .
+
+
+$(function(){
+	$("#open_categories").click(function(){
+		$("#submenu").slideToggle();
+	});
+})
