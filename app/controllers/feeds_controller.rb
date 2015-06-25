@@ -2,6 +2,7 @@ class FeedsController < ApplicationController
 
   require 'feedjira'
   before_action :set_feed, :only => [:show, :edit, :update, :destroy, :fetch] 
+  before_action :set_categories, :only => [:index, :show] 
 
   def feed_params
     params.require(:feed).permit(:category_id, :title, :url, :feed_url, :last_modified)
@@ -12,7 +13,6 @@ class FeedsController < ApplicationController
   def index
     @entries = Entry.includes(:clip).all
     @feeds = Feed.all
-    @categories = Category.all
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @feeds }
@@ -232,6 +232,10 @@ class FeedsController < ApplicationController
 
   def set_feed
     @feed = Feed.find(params[:id])
+  end
+
+  def set_categories
+    @categories = Category.all
   end
   
 end

@@ -1,7 +1,8 @@
 # coding: utf-8
 class CategoriesController < ApplicationController
 
-  before_action :set_category, :only => [:show, :edit, :update, :destroy]
+  before_action :set_category, :only => [:show, :edit, :edit, :update, :destroy]
+  before_action :set_categories, :only => [:index, :show, :edit, :new, :edit, :update]
 
   def category_params
     params.require(:category).permit(:name)
@@ -10,7 +11,6 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.all
     @entries = Entry.page(params[:page]) #発行順に並べ替えて取得
     respond_to do |format|
       format.html # index.html.erb
@@ -91,8 +91,14 @@ class CategoriesController < ApplicationController
     end
   end
 
+  private
+  
   def set_category
     @category = Category.find(params[:id])
+  end
+
+  def set_categories
+    @categories = Category.all
   end
   
 end

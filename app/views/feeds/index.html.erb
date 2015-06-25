@@ -20,16 +20,15 @@
 			</tr>
 
 			<% @feeds.each do |feed| %>
-				<tr>
+				<tr style="background-color:<%= cycle('#FFffFF', '#FFggFF') %>">
 					<td><%= feed.id %></td>
 					<td><%= if feed.category then feed.category.name else "" end %></td>
 					<td><%= link_to feed.title, feed %></td>
 					<th><%= feed.entries.count %></th>
-					<td><%= link_to 'Go Web Site', feed.url, :target => ["_blank"] %></td>
 					<td><%= link_to 'Edit', edit_feed_path(feed) %></td>
 					<td><%= link_to 'Fetch', fetch_feed_path(feed) %></td>
 					<td><%= link_to 'Destroy', feed, confirm: 'Are you sure?', method: :delete %></td>
-				</tr>
+					<td><%= link_to 'Web Site', feed.url, :target => ["_blank"] %></td>				</tr>
 			<% end %>
 
 			<tr>

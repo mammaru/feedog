@@ -1,6 +1,8 @@
 class EntriesController < ApplicationController
 
   before_action :set_clipped_entries, :only => :clipped
+  before_action :set_category, :only => [:show, :edit, :update, :destroy]
+  before_action :set_categories, :only => [:index, :show, :search, :edit, :update, :destroy]
 
   def entry_params
     params.require(:entry).permit(:feed_id, :summary, :title, :url, :published_at)
@@ -9,9 +11,9 @@ class EntriesController < ApplicationController
   # GET /entries
   # GET /entries.json
   def index
-    @categories = Category.includes(:feeds).all
-    # @feeds = Feed.all
-    # @entries = Entry.includes(:clip).page(params[:page])
+    #@categories = Category.includes(:feeds).all
+    #@feeds = Feed.all
+    #@entries = Entry.includes(:clip).page(params[:page])
     @entries = Entry.includes(:clip).page(params[:page])
    respond_to do |format|
       format.html # index.html.erb
@@ -65,6 +67,14 @@ class EntriesController < ApplicationController
   
   private
   
+  def set_category
+    @category = Category.find(params[:id])
+  end
+
+  def set_categories
+    @categories = Category.all
+  end
+
   def set_clipped_entries
     clipped_entries_id = Clip.pluck(:entry_id)
     @entries = Entry.where(:id => clipped_entries_id).page(params[:page])    

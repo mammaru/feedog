@@ -59,29 +59,28 @@ $(function(){
 
 
 // for clipped entries analysis
-function word_cloud(){
-	var natto_results = gon.results;
-	console.log(natto_results);
-	natto_results.splice(1000);
+function word_cloud(num){
+	var data = gon.results.slice(-num);
+	//console.log(natto_results);
 
 	var h = 800;
 	var w = 800;
 	var random = d3.random.irwinHall(2);
-	var countMax = d3.max(natto_results, function(d){ return d[1];} );
+	var countMax = d3.max(data, function(d){ return d[1];} );
 	var sizeScale = d3.scale.linear().domain([0, countMax]).range([10, 150]);
 	var colorScale = d3.scale.category20();
-	var words = natto_results.map(function(d) {
+	var words = data.map(function(d) {
 		return {
 		text: d[0],
 		size: sizeScale(d[1]) //頻出カウントを文字サイズに反映
 		};
 	});
-	console.log(words);
+	//console.log(words);
 
 
 	d3.layout.cloud().size([w, h])
 		.words(words)
-		.rotate(function() { return Math.round(1-random()) *60; }) //ランダムに文字を90度回転
+		.rotate(function() { return Math.round(1-random()) *33; }) //ランダムに文字を90度回転
 		.font("Impact")
 		.fontSize(function(d) { return d.size; })
 		.on("end", draw)
@@ -116,4 +115,71 @@ function word_cloud(){
 	}
 };
 
+
+// for bar chart of word frequency
+//d3.tsv("data.tsv", type, function(error, data) {
+function bar_chart(num) {
+	var margin = {top: 20, right: 20, bottom: 30, left: 40},
+		width = 960 - margin.left - margin.right,
+		height = 500 - margin.top - margin.bottom;
+
+	var x = d3.scale.ordinal()
+		.rangeRoundBands([0, width], .1);
+
+	var y = d3.scale.linear()
+		.range([height, 0]);
+
+	var xAxis = d3.svg.axis()
+		.scale(x)
+		.orient("bottom");
+
+	var yAxis = d3.svg.axis()
+		.scale(y)
+		.orient("left")
+		.ticks(10, "%");
+
+	//var svg = d3.select("body").append("svg")
+	var svg = d3.select("div#barchart").append("svg")
+		.attr("width", width + margin.left + margin.right)
+		.attr("height", height + margin.top + margin.bottom)
+		.append("g")
+		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+	//if (error) throw error;
+
+	var data = gon.results.slice(-num);
+	x.domain(data.map(function(d) { return d[0]; }));
+	y.domain([0, d3.max(data, function(d) { return d[1]; })]);
+
+	svg.append("g")
+		.attr("class", "x axis")
+		.attr("transform", "translate(0," + height + ")")
+		.call(xAxis);
+
+	svg.append("g")
+		.attr("class", "y axis")
+		.call(yAxis)
+		.append("text")
+		.attr("transform", "rotate(-90)")
+		.attr("y", 6)
+		.attr("dy", ".71em")
+		.style("text-anchor", "end")
+		.text("Frequency");
+
+	svg.selectAll(".bar")
+		.data(data)
+		.enter().append("rect")
+		.attr("class", "bar")
+		.attr("x", function(d) { return x(d[0]); })
+		.attr("width", x.rangeBand())
+		.attr("y", function(d) { return y(d[1]); })
+		.attr("height", function(d) { return height - y(d[1]); });
+
+	function type(d) {
+		d[1] = +d[1];
+		return d;
+	}
+
+};
 

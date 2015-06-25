@@ -1,3 +1,20 @@
 // Place all the styles related to the clips controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.bar {
+  fill: orange;
+  &:hover {
+	fill: orangered;
+  }
+}
+.axis {
+  font: 10px sans-serif;
+  path,line {
+	fill: none;
+	stroke: #000;
+	shape-rendering: crispEdges;
+  }
+}
+.x.axis path {
+  display: none;
+}
