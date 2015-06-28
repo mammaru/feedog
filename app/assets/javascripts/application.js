@@ -16,9 +16,23 @@
 //= require turbolinks
 //= require_tree .
 
+// fadein and follow attributes for the menubar
+$(function(){
+    $(window).scroll(function(){
+		var window_height = $(window).height();
+        var now = $(this).scrollTop();
+		console.log(window_height);
+        if(now >= 500 || window_height < 500){
+            $("#menubar").fadeIn();
+        }else{
+            $("#menubar").fadeOut();
+        }
+    });
+});
+
 
 $(function(){
 	$("#open_categories").click(function(){
 		$("#submenu").slideToggle();
 	});
-})
+});

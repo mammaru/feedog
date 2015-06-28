@@ -26,12 +26,13 @@ body {
 	background-color: rgba(230,230,230,1);
 }
 
-.menubar {
+#menubar {
 	position: fixed !important;
 	position: absolute;
+	display: none;
 	z-index: 1;
 	clear: both;
-	background-color: rgba(128,119,115,0.7);
+	background-color: rgba(120,120,120,0.7);
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -39,44 +40,48 @@ body {
 	text-align: center;
 }
 
-.menubar div#submenu {
+#menubar:hover {
+	background-color: rgba(120,120,120,1);	
+}
+
+#menubar div#submenu {
 	display: none;
 }
 
-.menubar a {
+#menubar a {
 	cursor: pointer;
 }
 
-.menubar a:link {
+#menubar a:link {
 	//color: #000000;
 	text-decoration: none;
 }
 
-.menubar a:visited {
+#menubar a:visited {
 	color: #000000;
 	text-decoration: none;
 }
 
-.menubar a:hover {
+#menubar a:hover {
 	color: rgba(255,255,255,1);
 	background-color: rgba(128,119,115,0);
 	text-decoration: none;
 }
 
-ul.mainmenu {
+ul#mainmenu {
 	font-family: "Open Sans", Verdana, Arial, sans-serif;
 	//float: right;
 	text-transform: uppercase;
 	font-weight: 100;
 }
 
-ul.mainmenu li {
+ul#mainmenu li {
 	display: inline-block;
 	padding: 5px 20px 5px 20px;
 	font-size: medium;
 }
 
-ul.mainmenu li:hover {
+ul#mainmenu li:hover {
 	background-color: rgba(100,100,100,1);
 	color: rgba(255,255,255,1);
 }

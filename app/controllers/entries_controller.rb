@@ -72,7 +72,7 @@ class EntriesController < ApplicationController
   end
 
   def set_categories
-    @categories = Category.all
+    @categories = Category.order(:name)
   end
 
   def set_clipped_entries

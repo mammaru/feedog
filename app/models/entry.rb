@@ -14,6 +14,7 @@ class Entry < ActiveRecord::Base
   def self.destroy_overflowed_entries(*feed_id)
     clipped_entries = Clip.pluck(:entry_id)
     if feed_id
+      p "AAAAAAAAAAAAAAA"
       entries = Entry.where(:feed_id => feed_id).pluck(:id)
       entries = entries - clipped_entries
       if entries.length > MAX_NUMBER_OF_ENTRIES_PER_FEED

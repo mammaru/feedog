@@ -1,14 +1,6 @@
 <% content_for :main do %>
-
-  <p>
-    <b>
-      <%= @category.name %>
-    </b>
-  </p>
-
-  <%= link_to 'Entries', entries_path %>
-  <%= link_to 'Categories', categories_path %>
-
-  <%= render 'shared/entries' %>
-
+	<div align="center">
+		<h1><%= @category.name %></h1>
+	</div>
+	<%= render 'shared/entries' %>
 <% end %>

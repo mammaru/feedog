@@ -18,15 +18,6 @@ class CategoriesController < ApplicationController
     end
   end
 
-  def show_categories
-    @entries = Entry.all
-    @categories = Category.all
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @categories }
-    end
-  end
-
   # GET /categories/1
   # GET /categories/1.json
   def show
@@ -98,7 +89,7 @@ class CategoriesController < ApplicationController
   end
 
   def set_categories
-    @categories = Category.all
+    @categories = Category.order(:name)
   end
   
 end

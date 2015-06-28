@@ -36,7 +36,7 @@ class ClipsController < ApplicationController
   end
 
   def set_categories
-    @categories = Category.all
+    @categories = Category.order(:name)
   end
 
   

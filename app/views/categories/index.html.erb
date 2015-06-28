@@ -1,33 +1,33 @@
 <% content_for :main do %>
 
-<h1>Categories</h1>
+	<div align="center">
+		<h1>Categories</h1>
 
-    <%= link_to 'Entries', entries_path %>
-    <%= link_to 'Feeds', feeds_path %>
+		<%= link_to 'New Category', new_category_path %>
+
+		<table>
+			<tr>
+				<th></th>
+				<th>Name</th>
+				<th></th>
+				<th></th>
+				<th></th>
+			</tr>
+
+			<% @categories.each do |category| %>
+				<tr style="background-color:<%= cycle('#FFffFF', '#FFggFF') %>">
+					<th><%= category.id %></th>
+					<td><%= category.name %></td>
+					<td><%= link_to 'Show', category %></td>
+					<td><%= link_to 'Edit', edit_category_path(category) %></td>
+					<td><%= link_to 'Destroy', category, confirm: 'Are you sure?', method: :delete %></td>
+				</tr>
+			<% end %>
+		</table>
+
+		<br />
 
 
-    <table>
-  <tr>
-    <th></th>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @categories.each do |category| %>
-  <tr>
-    <th><%= category.id %></th>
-    <td><%= category.name %></td>
-    <td><%= link_to 'Show', category %></td>
-    <td><%= link_to 'Edit', edit_category_path(category) %></td>
-    <td><%= link_to 'Destroy', category, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Category', new_category_path %>
+	</div>
 
 <% end %>

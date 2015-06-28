@@ -3,15 +3,14 @@
     <%= javascript_include_tag "d3/d3.min.js" %>
     <%= javascript_include_tag "d3/d3.layout.cloud.js" %>
 
-<h1>Clipped Entries</h1>
+	<div align="center">
+		<h1>Clipped Entries</h1>
 
-    <%= link_to 'Visualization', :action => :vis %>
-    <%= link_to 'Feeds', feeds_path %>
-    <%= link_to 'Categories', categories_path %>
+		<%= link_to 'Visualization', :action => :vis %>
 
-    <br />
-
-    <%= render 'shared/entries' %>
+		<br />
+	</div>
+	<%= render 'shared/entries' %>
 
 <% end %>
 

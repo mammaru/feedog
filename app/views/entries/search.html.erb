@@ -1,9 +1,10 @@
 <% content_for :main do %>
-
-  <h1>Search results for "<%= @word %>"</h1>
-  <%= link_to 'Entries', entries_path %>
-  <br />
-  <%= render 'shared/entries' %>
+	<div align="center">
+		<h1>Search results for "<%= @word %>"</h1>
+		<%= link_to 'Entries', entries_path %>
+		<br />
+	</div>
+	<%= render 'shared/entries' %>
 
 <% end %>
 
